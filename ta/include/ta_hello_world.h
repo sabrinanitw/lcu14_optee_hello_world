@@ -34,5 +34,6 @@
 
 /* The TAFs ID implemented in this TA */
 #define TA_HELLO_WORLD_CMD_INC_VALUE	0
+#define TA_HELLO_WORLD_CMD_DEMO_MEMORY_ACCESS_CONTROL	3
 
 #endif /*TA_HELLO_WORLD_H*/

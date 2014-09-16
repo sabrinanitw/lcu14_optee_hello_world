@@ -57,29 +57,30 @@ int main(int argc, char *argv[])
 			res, err_origin);
 
 	/*
-	 * Execute a function in the TA by invoking it, in this case
-	 * we're incrementing a number.
+	 * Execute a function in the TA by invoking it.
 	 *
 	 * The value of command ID part and how the parameters are
 	 * interpreted is part of the interface provided by the TA.
 	 */
 
 	/*
+	 * Read parameter from user input.
 	 * Prepare the argument. Pass a value in the first parameter,
 	 * the remaining three parameters are unused.
 	 */
 	memset(&op, 0, sizeof(op));
 	op.paramTypes = TEEC_PARAM_TYPES(TEEC_VALUE_INOUT, TEEC_NONE,
 					 TEEC_NONE, TEEC_NONE);
-	op.params[0].value.a = 42;
+	printf("Please number 1-6 to show different demo case\n");
+	scanf("%d", &op.params[0].value.a);
 
-	printf("Invoking TA to increment %d\n", op.params[0].value.a);
-	res = TEEC_InvokeCommand(&sess, TA_HELLO_WORLD_CMD_INC_VALUE, &op,
+	printf("Invoking TA with args %d\n", op.params[0].value.a);
+	res = TEEC_InvokeCommand(&sess, TA_HELLO_WORLD_CMD_DEMO_MEMORY_ACCESS_CONTROL, &op,
 				 &err_origin);
 	if (res != TEEC_SUCCESS)
 		errx(1, "TEEC_InvokeCommand failed with code 0x%x origin 0x%x",
 			res, err_origin);
-	printf("TA incremented value to %d\n", op.params[0].value.a);
+	printf("TEEC_InvokeCommand done!!!\n");
 
 	/*
 	 * We're done with the TA, close the session and
