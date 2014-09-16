@@ -36,7 +36,9 @@ int main(int argc, char *argv[])
 	TEEC_Context ctx;
 	TEEC_Session sess;
 	TEEC_Operation op;
-	TEEC_UUID uuid = TA_HELLO_WORLD_UUID;
+	TEEC_UUID uuid = \
+		{ 0xd96a5b40, 0xc3e5, 0x21e3, \
+			{ 0x87, 0x94, 0x10, 0x02, 0xa5, 0xd5, 0xc6, 0x1b } };
 	uint32_t err_origin;
 
 	/* Initialize a context connecting us to the TEE */
